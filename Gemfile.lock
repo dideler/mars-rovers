@@ -1,0 +1,26 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.2.5)
+    rspec (3.5.0.beta3)
+      rspec-core (= 3.5.0.beta3)
+      rspec-expectations (= 3.5.0.beta3)
+      rspec-mocks (= 3.5.0.beta3)
+    rspec-core (3.5.0.beta3)
+      rspec-support (= 3.5.0.beta3)
+    rspec-expectations (3.5.0.beta3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.beta3)
+    rspec-mocks (3.5.0.beta3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.beta3)
+    rspec-support (3.5.0.beta3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rspec (~> 3.x)
+
+BUNDLED WITH
+   1.11.2
