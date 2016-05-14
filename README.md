@@ -6,7 +6,11 @@ It's now decommissioned but it's still a great code kata!
 
 ## Getting Started
 
-TODO
+Install the Ruby version specified in `.ruby-version`
+
+Install Ruby Gems with `bundle install`
+
+Run tests with `bundle exec rspec`
 
 ## Problem Description
 
