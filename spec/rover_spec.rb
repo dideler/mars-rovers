@@ -6,7 +6,7 @@ RSpec.describe Rover do
   let(:position) { instance_double(Position) }
   subject(:rover) { Rover.new(plateau, position) }
 
-  describe '#run' do
+  xdescribe '#run' do
     context 'with no input' do
       it 'stays at its starting position' do
         rover.run
