@@ -1,8 +1,10 @@
 require 'commands/left_command'
+require 'commands/right_command'
 
 class Commander
   COMMANDS = {
     'L' => LeftCommand,
+    'R' => RightCommand,
   }
   private_constant :COMMANDS
 

@@ -12,6 +12,10 @@ When 'given instructions to turn left' do
   @rover.run('L')
 end
 
+When 'given instructions to turn right' do
+  @rover.run('R')
+end
+
 Then 'it will be facing "$direction"' do |direction|
   expect(@rover.direction).to eq(direction)
 end

@@ -15,3 +15,15 @@ Scenario Outline: Rover can turn left
   | S         | E             |
   | E         | N             |
 
+Scenario Outline: Rover can turn right
+  Given a Rover facing "<direction>"
+  When given instructions to turn right
+  Then it will be facing "<new_direction>"
+
+  Examples:
+  | direction | new_direction |
+  | N         | E             |
+  | W         | N             |
+  | S         | W             |
+  | E         | S             |
+
