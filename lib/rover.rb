@@ -23,6 +23,15 @@ class Rover
   end
 
   def move_forward(units = 1)
-    position.change_coordinates_by(0, 1)
+    new_x, new_y = position.change_coordinates_by(0, 1, dry_run: true)
+    position.change_coordinates_by(0, 1) if safe_to_move?(new_x, new_y)
   end
+
+  private
+
+  def safe_to_move?(x, y)
+    plateau.within_bounds?(x, y)
+  end
+
+  attr_reader :plateau
 end

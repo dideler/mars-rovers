@@ -32,3 +32,8 @@ Scenario: Rover can move forward
   When given instructions to move forward
   Then it will be at position "0 1 N"
 
+Scenario: Rover does not drive off the Plateau
+  Given a Plateau with upper-right coordinates "1 1"
+  And a Rover at position "0 1 N"
+  When given instructions to move forward
+  Then it will be at position "0 1 N"
