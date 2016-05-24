@@ -11,6 +11,11 @@ class Position
     orientation.change_by_angle(degrees)
   end
 
+  def change_coordinates_by(x_delta, y_delta)
+    coordinates.x += x_delta
+    coordinates.y += y_delta
+  end
+
   def direction
     orientation.to_s
   end

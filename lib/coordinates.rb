@@ -1,1 +1,5 @@
-class Coordinates < Struct.new(:x, :y); end
+class Coordinates < Struct.new(:x, :y)
+  def to_s
+    "#{x} #{y}"
+  end
+end

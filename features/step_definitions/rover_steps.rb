@@ -8,6 +8,16 @@ Given 'a Rover is facing "$direction"' do |direction|
   @rover = Rover.new(plateau, position)
 end
 
+Given 'a Rover at position "$position"' do |position|
+  x, y, direction = position.split
+  x, y = x.to_i, y.to_i
+  plateau ||= Plateau.new(max_x: x + 1, max_y: y + 1)
+  coordinates = Coordinates.new(x, y)
+  orientation = Orientation.new(direction)
+  position = Position.new(coordinates, orientation)
+  @rover = Rover.new(plateau, position)
+end
+
 When 'given instructions to turn left' do
   @rover.run('L')
 end
@@ -16,6 +26,14 @@ When 'given instructions to turn right' do
   @rover.run('R')
 end
 
+When 'given instructions to move forward' do
+  @rover.run('M')
+end
+
 Then 'it will be facing "$direction"' do |direction|
   expect(@rover.direction).to eq(direction)
+end
+
+Then 'it will be at position "$position"' do |position|
+  expect(@rover.position.to_s).to eq(position)
 end

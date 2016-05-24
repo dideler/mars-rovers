@@ -21,4 +21,8 @@ class Rover
   def turn(angle_degrees)
     position.change_orientation_by_angle(angle_degrees)
   end
+
+  def move_forward(units = 1)
+    position.change_coordinates_by(0, 1)
+  end
 end
