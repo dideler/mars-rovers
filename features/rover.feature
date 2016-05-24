@@ -4,7 +4,7 @@ Feature: Rover navigation
   Because I want to explore a Plateau
 
 Scenario Outline: Rover can turn left
-  Given a Rover facing "<direction>"
+  Given a Rover is facing "<direction>"
   When given instructions to turn left
   Then it will be facing "<new_direction>"
 
@@ -16,7 +16,7 @@ Scenario Outline: Rover can turn left
   | E         | N             |
 
 Scenario Outline: Rover can turn right
-  Given a Rover facing "<direction>"
+  Given a Rover is facing "<direction>"
   When given instructions to turn right
   Then it will be facing "<new_direction>"
 

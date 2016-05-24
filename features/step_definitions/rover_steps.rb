@@ -1,6 +1,6 @@
 require 'rover'
 
-Given 'a Rover facing "$direction"' do |direction|
+Given 'a Rover is facing "$direction"' do |direction|
   plateau = Plateau.new(max_x: 1, max_y: 1)
   coordinates = Coordinates.new(0, 0)
   orientation = Orientation.new(direction)
