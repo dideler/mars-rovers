@@ -3,6 +3,8 @@ require 'commands/right_command'
 require 'commands/move_command'
 
 class Commander
+  class InvalidInstruction < RuntimeError; end
+
   COMMANDS = {
     'L' => LeftCommand,
     'R' => RightCommand,
@@ -12,7 +14,14 @@ class Commander
 
   def self.execute(instructions, rover)
     instructions.split('').each do |i|
-      COMMANDS[i].execute(rover)
+      command_for(i).execute(rover)
     end
   end
+
+  def self.command_for(instruction)
+    COMMANDS.fetch(instruction) {
+      raise InvalidInstruction, "Instruction '#{instruction}' not recognised"
+    }
+  end
+  private_class_method :command_for
 end
