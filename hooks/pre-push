@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+remote_name, remote_address = ARGV
+local_ref, local_sha1, remote_ref, remote_sha1 = STDIN.read.split
+
+exit 0 unless remote_ref == 'refs/heads/master'
+
+bin/test

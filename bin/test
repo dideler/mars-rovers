@@ -1,0 +1,5 @@
+#!/usr/bin/env bash -e
+
+bundle exec rspec
+bundle exec cucumber
+bundle exec rubocop

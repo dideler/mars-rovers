@@ -6,11 +6,9 @@ It's now decommissioned but it's still a great code kata!
 
 ## Getting Started
 
-Install the Ruby version specified in `.ruby-version`
+Run `bin/setup` to setup the project and its dependencies.
 
-Install Ruby Gems with `bundle install`
-
-Run tests with `bundle exec rspec`
+Run `bin/test` to run the test suite.
 
 ## Problem Description
 

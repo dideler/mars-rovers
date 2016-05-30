@@ -1,0 +1,32 @@
+#!/usr/bin/env bash -e
+
+# bin/bootstrap: Resolve all dependencies that the application requires to run.
+
+cd "$(dirname "$0")/.."
+
+if [ -f ".ruby-version" ]; then
+  if [ "$(command -v rbenv)" ] && [ -z "$(rbenv version-name 2>/dev/null)" ]; then
+    echo "==> Installing ruby through rbenv…"
+    rbenv install --skip-existing
+    if ! [ "$(command -v bundler)" ]; then
+      gem install bundler
+      rbenv rehash
+    fi
+  elif [ "$(command -v rvm)" ] && [ "$(rvm current)" == "system" ]; then
+    echo "==> Installing ruby through rvm…"
+    rvm install $(cat .ruby-version)
+    if ! [ "$(command -v bundler)" ]; then
+      gem install bundler
+    fi
+  elif [ "$(command -v chruby)" ] && [ -z "$RUBY_ROOT" ]; then
+    echo "ABORT: Auto-installing Ruby not yet supported for chruby users (patches welcome)"
+    exit 1
+  fi
+fi
+
+if [ -f "Gemfile" ]; then
+  echo "==> Installing gem dependencies…"
+  bundle check --path vendor/bundle 2>&1 >/dev/null || {
+    bundle install --path vendor/bundle --quiet --without production
+  }
+fi

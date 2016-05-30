@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# bin/git-hooks: Sets up git hooks on the local machine.
+
+require 'pathname'
+require 'fileutils'
+
+APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+
+class GitHook
+  def self.all
+    Dir.glob(File.join(APP_ROOT, 'hooks', '*')).map { |p| new(p) }
+  end
+
+  attr_reader :source_path
+
+  def initialize(source_path)
+    @source_path = source_path
+  end
+
+  def destination_path
+    File.join(APP_ROOT, '.git', 'hooks', filename)
+  end
+
+  private
+
+  def filename
+    File.basename(source_path)
+  end
+end
+
+GitHook.all.each do |git_hook|
+  FileUtils.ln_sf git_hook.source_path, git_hook.destination_path
+end
