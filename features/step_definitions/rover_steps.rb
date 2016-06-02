@@ -36,6 +36,10 @@ When 'given instructions to move forward' do
   @rover.run('M')
 end
 
+When 'given no instructions' do
+  @rover.run('')
+end
+
 Then 'it will be facing "$direction"' do |direction|
   expect(@rover.direction).to eq(direction)
 end
