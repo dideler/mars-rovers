@@ -5,7 +5,6 @@ Given 'a Plateau with upper-right coordinates "$coords"' do |coords|
   @plateau = Plateau.new(max_x: x, max_y: y)
 end
 
-
 Given 'a Rover is facing "$direction"' do |direction|
   plateau = Plateau.new(max_x: 1, max_y: 1)
   coordinates = Coordinates.new(0, 0)

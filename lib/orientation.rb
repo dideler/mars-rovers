@@ -7,7 +7,7 @@ class Orientation
     'E' =>  90,
     'S' => 180,
     'W' => 270,
-  }
+  }.freeze
 
   def initialize(direction)
     @current_direction = direction

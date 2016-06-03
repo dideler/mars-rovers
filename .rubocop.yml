@@ -1,0 +1,23 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - Gemfile
+    - bin/**/*
+    - hooks/**/*
+    - vendor/**/*
+
+Metrics/LineLength:
+  Max: 100
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+

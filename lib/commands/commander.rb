@@ -9,7 +9,7 @@ class Commander
     'L' => LeftCommand,
     'R' => RightCommand,
     'M' => MoveCommand,
-  }
+  }.freeze
   private_constant :COMMANDS
 
   def self.execute(instructions, rover)
