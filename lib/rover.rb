@@ -22,15 +22,14 @@ class Rover
     position.change_orientation_by_angle(angle_degrees)
   end
 
-  def move_forward(units = 1)
-    new_x, new_y = position.change_coordinates_by(0, 1, dry_run: true)
-    position.change_coordinates_by(0, 1) if safe_to_move?(new_x, new_y)
+  def move_safely(y_delta)
+    position.change_coordinates_by(0, y_delta) if safe_to_move?(y_delta)
   end
 
   private
 
-  def safe_to_move?(x, y)
-    plateau.within_bounds?(x, y)
+  def safe_to_move?(y_delta)
+    plateau.within_bounds?(position.coordinates.x, position.coordinates.y + y_delta)
   end
 
   attr_reader :plateau

@@ -1,5 +1,5 @@
 class MoveCommand
   def self.execute(rover)
-    rover.move_forward
+    rover.move_safely(1)
   end
 end
