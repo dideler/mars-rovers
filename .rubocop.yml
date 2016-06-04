@@ -15,6 +15,9 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
 Style/BlockDelimiters:
   EnforcedStyle: semantic
 

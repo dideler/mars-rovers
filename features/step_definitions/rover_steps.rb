@@ -40,7 +40,7 @@ When 'given no instructions' do
 end
 
 Then 'it will be facing "$direction"' do |direction|
-  expect(@rover.direction).to eq(direction)
+  expect(@rover.direction.to_s).to eq(direction)
 end
 
 Then 'it will be at position "$position"' do |position|

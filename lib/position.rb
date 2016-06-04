@@ -2,6 +2,10 @@ require 'coordinates'
 require 'orientation'
 
 class Position
+  attr_reader :coordinates, :orientation
+  alias_method :location, :coordinates
+  alias_method :direction, :orientation
+
   def initialize(coordinates, orientation)
     @coordinates = coordinates
     @orientation = orientation
@@ -22,15 +26,7 @@ class Position
     end
   end
 
-  def direction
-    orientation.to_s
-  end
-
   def to_s
     "#{coordinates} #{orientation}"
   end
-
-  private
-
-  attr_reader :coordinates, :orientation
 end
