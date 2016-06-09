@@ -35,7 +35,7 @@ When 'given instructions to move forward' do
   @rover.run('M')
 end
 
-When 'given no instructions' do
+When 'given empty instructions' do
   @rover.run('')
 end
 

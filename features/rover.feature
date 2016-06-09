@@ -34,7 +34,7 @@ Scenario: Rover can move forward
 
 Scenario: Rover stays put
   Given a Rover at position "0 0 N"
-  When given no instructions
+  When given empty instructions
   Then it will be at position "0 0 N"
 
 Scenario: Rover does not drive off the Plateau
