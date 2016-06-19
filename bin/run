@@ -2,6 +2,19 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
+require 'optparse'
+
+ARGV << '-h' if ARGV.empty?
+
+OptionParser.new do |opts|
+  opts.banner = "Runs the rover with instructions from input file.\n\nUsage: bin/run [--help] INPUT_FILE"
+
+  opts.on_tail('-h', '--help', 'Prints this help') do
+    puts opts
+    exit
+  end
+end.parse!
+
 require 'runner/file_parser'
 require 'position'
 require 'rover'
