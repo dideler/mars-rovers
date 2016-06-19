@@ -23,13 +23,13 @@ class Position
   def try_moving_straight(units)
     case
     when orientation.east?
-      change_coordinates_by(x_delta: units) if safe_to_move?(x_delta: units)
+      safely_change_coordinates_by(x_delta: units)
     when orientation.west?
-      change_coordinates_by(x_delta: -units) if safe_to_move?(x_delta: -units)
+      safely_change_coordinates_by(x_delta: -units)
     when orientation.north?
-      change_coordinates_by(y_delta: units) if safe_to_move?(y_delta: units)
+      safely_change_coordinates_by(y_delta: units)
     when orientation.south?
-      change_coordinates_by(y_delta: -units) if safe_to_move?(y_delta: -units)
+      safely_change_coordinates_by(y_delta: -units)
     end
   end
 
@@ -49,7 +49,9 @@ class Position
     plateau.within_bounds?(coordinates.x + x_delta, coordinates.y + y_delta)
   end
 
-  def change_coordinates_by(x_delta: 0, y_delta: 0)
-    [coordinates.x += x_delta, coordinates.y += y_delta]
+  def safely_change_coordinates_by(x_delta: 0, y_delta: 0)
+    if safe_to_move?(x_delta: x_delta, y_delta: y_delta)
+      [coordinates.x += x_delta, coordinates.y += y_delta]
+    end
   end
 end
