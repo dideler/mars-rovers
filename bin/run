@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'runner/file_parser'
+require 'position'
+require 'rover'
+
+file_parser = Runner::FileParser.call(*ARGV)
+
+plateau_x, plateau_y = file_parser.plateau_coordinates.map(&:to_i)
+
+file_parser.rover_data.each_slice(2) do |position, instructions|
+  rover_x, rover_y = position.split.first(2).map(&:to_i)
+  direction = position[-1]
+
+  position = Position.create(x: rover_x, y: rover_y, max_x: plateau_x, max_y: plateau_y, direction: direction)
+  rover = Rover.new(position)
+
+  puts instructions
+  rover.run(instructions)
+  puts rover.position
+end
