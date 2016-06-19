@@ -2,10 +2,8 @@ class Plateau
   class InvalidBoundary < ArgumentError; end
 
   def initialize(min_x = 0, min_y = 0, max_x, max_y)
-    @min_x = min_x
-    @min_y = min_y
-    @max_x = max_x
-    @max_y = max_y
+    @min_x, @min_y = min_x, min_y
+    @max_x, @max_y = max_x, max_y
     validate_coordinates!
   end
 

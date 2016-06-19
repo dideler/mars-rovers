@@ -12,6 +12,9 @@ Metrics/LineLength:
 Style/Documentation:
   Enabled: false
 
+Style/ParallelAssignment:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
