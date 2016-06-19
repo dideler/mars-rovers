@@ -7,6 +7,13 @@ class Position
   alias_method :location, :coordinates
   alias_method :direction, :orientation
 
+  def self.create(**options)
+    coordinates = Coordinates.new(options.fetch(:x), options.fetch(:y))
+    orientation = Orientation.new(options.fetch(:direction))
+    plateau = Plateau.new(options.fetch(:max_x), options.fetch(:max_y))
+    new(coordinates, orientation, plateau)
+  end
+
   def initialize(coordinates, orientation, plateau)
     @coordinates = coordinates
     @orientation = orientation

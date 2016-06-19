@@ -2,21 +2,19 @@ require 'rover'
 
 Given 'a Plateau with upper-right coordinates "$coords"' do |coords|
   x, y = coords.split.map(&:to_i)
-  @plateau = Plateau.new(max_x: x, max_y: y)
+  @plateau = Plateau.new(x, y)
 end
 
 Given 'a Rover is facing "$direction"' do |direction|
-  plateau = Plateau.new(max_x: 1, max_y: 1)
-  coordinates = Coordinates.new(0, 0)
-  orientation = Orientation.new(direction)
-  position = Position.new(coordinates, orientation, plateau)
+  position = Position.create(x: 0, y: 0, max_x: 1, max_y: 1, direction: direction)
   @rover = Rover.new(position)
 end
 
 Given 'a Rover at position "$position"' do |position|
   x, y, direction = position.split
   x, y = x.to_i, y.to_i
-  @plateau ||= Plateau.new(max_x: x + 1, max_y: y + 1)
+
+  @plateau ||= Plateau.new(x + 1, y + 1)
   coordinates = Coordinates.new(x, y)
   orientation = Orientation.new(direction)
   position = Position.new(coordinates, orientation, @plateau)
