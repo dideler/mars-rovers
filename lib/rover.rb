@@ -1,12 +1,10 @@
 require 'commands/commander'
-require 'plateau'
 require 'position'
 
 class Rover
   attr_reader :position
 
-  def initialize(plateau, position)
-    @plateau = plateau
+  def initialize(position)
     @position = position
   end
 
@@ -22,15 +20,7 @@ class Rover
     position.change_orientation_by_angle(angle_degrees)
   end
 
-  def move_safely(y_delta)
-    position.change_coordinates_by(0, y_delta) if safe_to_move?(y_delta)
+  def move_straight_safely(units)
+    position.try_moving_straight(units)
   end
-
-  private
-
-  def safe_to_move?(y_delta)
-    plateau.within_bounds?(position.coordinates.x, position.coordinates.y + y_delta)
-  end
-
-  attr_reader :plateau
 end

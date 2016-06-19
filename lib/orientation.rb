@@ -22,6 +22,22 @@ class Orientation
     @current_direction
   end
 
+  def north?
+    @current_direction == 'N'
+  end
+
+  def east?
+    @current_direction == 'E'
+  end
+
+  def south?
+    @current_direction == 'S'
+  end
+
+  def west?
+    @current_direction == 'W'
+  end
+
   private
 
   def calculate_heading(angle_degrees)

@@ -9,8 +9,8 @@ Given 'a Rover is facing "$direction"' do |direction|
   plateau = Plateau.new(max_x: 1, max_y: 1)
   coordinates = Coordinates.new(0, 0)
   orientation = Orientation.new(direction)
-  position = Position.new(coordinates, orientation)
-  @rover = Rover.new(plateau, position)
+  position = Position.new(coordinates, orientation, plateau)
+  @rover = Rover.new(position)
 end
 
 Given 'a Rover at position "$position"' do |position|
@@ -19,8 +19,8 @@ Given 'a Rover at position "$position"' do |position|
   @plateau ||= Plateau.new(max_x: x + 1, max_y: y + 1)
   coordinates = Coordinates.new(x, y)
   orientation = Orientation.new(direction)
-  position = Position.new(coordinates, orientation)
-  @rover = Rover.new(@plateau, position)
+  position = Position.new(coordinates, orientation, @plateau)
+  @rover = Rover.new(position)
 end
 
 When 'given instructions to turn left' do
