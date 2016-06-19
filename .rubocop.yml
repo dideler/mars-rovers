@@ -21,6 +21,13 @@ Style/FrozenStringLiteralComment:
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
+Style/SpaceAroundOperators:
+  Exclude:
+    - lib/orientation.rb
+
+Style/StructInheritance:
+  Enabled: false
+
 Style/BlockDelimiters:
   EnforcedStyle: semantic
 

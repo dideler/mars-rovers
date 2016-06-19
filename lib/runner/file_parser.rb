@@ -15,7 +15,7 @@ module Runner
       File.open(@filepath) do |f|
         @plateau_coordinates = f.readline.split
 
-        while line = f.gets
+        while (line = f.gets)
           next if line == "\n"
           @rover_data << line.chomp
         end
