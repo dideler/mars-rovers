@@ -13,7 +13,7 @@ module Runner
     def call
       @rover_data = []
       File.open(@filepath) do |f|
-        @plateau_coordinates = f.readline.split # TODO: .map(&:to_i)
+        @plateau_coordinates = f.readline.split
 
         while line = f.gets
           next if line == "\n"

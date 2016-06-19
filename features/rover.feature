@@ -27,10 +27,15 @@ Scenario Outline: Rover can turn right
   | S         | W             |
   | E         | S             |
 
-Scenario: Rover can move forward
+Scenario: Rover can move vertically
   Given a Rover at position "0 0 N"
   When given instructions to move forward
   Then it will be at position "0 1 N"
+
+Scenario: Rover can move horizontally
+  Given a Rover at position "0 0 E"
+  When given instructions to move forward
+  Then it will be at position "1 0 E"
 
 Scenario: Rover stays put
   Given a Rover at position "0 0 N"
