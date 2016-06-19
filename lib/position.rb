@@ -22,10 +22,14 @@ class Position
 
   def try_moving_straight(units)
     case
-    when orientation.east?, orientation.west?
+    when orientation.east?
       change_coordinates_by(x_delta: units) if safe_to_move?(x_delta: units)
-    when orientation.north?, orientation.south?
+    when orientation.west?
+      change_coordinates_by(x_delta: -units) if safe_to_move?(x_delta: -units)
+    when orientation.north?
       change_coordinates_by(y_delta: units) if safe_to_move?(y_delta: units)
+    when orientation.south?
+      change_coordinates_by(y_delta: -units) if safe_to_move?(y_delta: -units)
     end
   end
 
