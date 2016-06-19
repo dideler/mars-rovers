@@ -2,6 +2,10 @@ require 'coordinates'
 require 'orientation'
 require 'plateau'
 
+class Symbol
+  alias_method :~, :to_proc
+end
+
 class Position
   attr_reader :coordinates, :orientation
   alias_method :location, :coordinates
@@ -21,15 +25,11 @@ class Position
   end
 
   def try_moving_straight(units)
-    case
-    when orientation.east?
-      safely_change_coordinates_by(x_delta: units)
-    when orientation.west?
-      safely_change_coordinates_by(x_delta: -units)
-    when orientation.north?
-      safely_change_coordinates_by(y_delta: units)
-    when orientation.south?
-      safely_change_coordinates_by(y_delta: -units)
+    case orientation
+    when ~:east? then safely_change_coordinates_by(x_delta: units)
+    when ~:west? then safely_change_coordinates_by(x_delta: -units)
+    when ~:north? then safely_change_coordinates_by(y_delta: units)
+    when ~:south? then safely_change_coordinates_by(y_delta: -units)
     end
   end
 
