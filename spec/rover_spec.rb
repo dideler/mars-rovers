@@ -2,16 +2,14 @@ require 'spec_helper'
 require 'rover'
 
 RSpec.describe Rover do
-  let(:plateau) { instance_double(Plateau) }
   let(:position) { instance_double(Position) }
-  subject(:rover) { Rover.new(plateau, position) }
+  subject(:rover) { Rover.new(position) }
 
-  xdescribe '#run' do
-    context 'with no input' do
-      it 'stays at its starting position' do
-        rover.run
-        expect(rover.position).to eq(position)
-      end
+  describe '#run' do
+    let(:instructions) { 'ABC' }
+    it 'executes instructions' do
+      expect(Commander).to receive(:execute).with(instructions, rover)
+      rover.run(instructions)
     end
   end
 end

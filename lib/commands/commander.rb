@@ -13,8 +13,8 @@ class Commander
   private_constant :COMMANDS
 
   def self.execute(instructions, rover)
-    instructions.split('').each do |i|
-      command_for(i).execute(rover)
+    instructions.split('').each do |instruction|
+      command_for(instruction).execute(rover)
     end
   end
 
