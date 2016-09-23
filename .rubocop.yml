@@ -1,4 +1,6 @@
 AllCops:
+  UseCache: true
+  MaxFilesInCache: 100
   Exclude:
     - Gemfile
     - bin/**/*
